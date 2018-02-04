@@ -4,6 +4,13 @@
 	
 function insert(value, position, array){
 	let tempArray = array.slice(0)
+	if (position === tempArray.length){
+		tempArray[position] = value
+		return tempArray
+	}
+	if (position < 0 || position > tempArray.length){
+		return false
+	}
 	for (let i = array.length-1; i >= 0; i--){
 		if (i != position){
 			tempArray[i+1] = tempArray[i]
@@ -14,7 +21,6 @@ function insert(value, position, array){
 			break
 		}
 	}
-	console.log(tempArray)
 	return tempArray
 }
 
@@ -31,13 +37,16 @@ console.assert(String(newArray) === String([1,6,7,4,8,9,0,3]),`6 doesn't correct
 console.log(`6 correctly inserted into 'testArray'!`)
 resetTestArrays()
 newArray = insert(2,6,testArray)
-console.assert(String(newArray) === String([1,7,4,8,9,0,2,300]),`2 doesn't correctly get inserted into index 6 of 'testArray' [${newArray}]`)
+console.assert(String(newArray) === String([1,7,4,8,9,0,2,3]),`2 doesn't correctly get inserted into index 6 of 'testArray' [${newArray}]`)
 console.log(`2 correctly inserted into 'testArray'!`)
 resetTestArrays()
 newArray = insert(9,7,testArray)
 console.assert(String(newArray) === String([1,7,4,8,9,0,3,9]),`9 doesn't correctly get inserted into index 7 of 'testArray' [${newArray}]`)
 console.log(`9 correctly inserted into 'testArray'!`)
 resetTestArrays()
+newArray = insert(100,-9,testArray)
+console.assert(!newArray,`Ludacris insertions aren't rejected, 'insert 100 into -9th index of test array.'`)
+console.log('rediculous insertions are rejected!')
 console.log('All insert tests complete')
 
 // sort
