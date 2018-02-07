@@ -35,4 +35,7 @@ function findSmallest(startRange, array){
 	return smallestPosition;
 }
 
-
+module.exports = {
+	insert: insert,
+	findSmallest: findSmallest
+}
