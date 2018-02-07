@@ -1,3 +1,5 @@
+//TODO make TestSeries act more like instances of a group of tests able to be used in another's tests.
+
 function TestSeries() {
 	this.tests = []
 	this.results = []
