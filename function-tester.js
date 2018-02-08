@@ -19,14 +19,19 @@ TestSeries.prototype.run = function(){
 	let resultString = "=====[ BEGIN TESTS ]===== \n \n";
 	let passes = 0;
 	for (let i = 0; i < this.tests.length; i++){
-		if(this.tests[i].operation(...this.tests[i].inputs)===this.tests[i].assertion){
-			this.results[i] = true;
-			resultString += `..PASS..: ${this.tests[i].assertionDescription} \n`;
-			++passes;
+		if(typeof(this.tests[i].assertion) != "object"){
+			if(this.tests[i].operation(...this.tests[i].inputs)===this.tests[i].assertion){
+				this.results[i] = true;
+				resultString += `..PASS..: ${this.tests[i].assertionDescription} \n`;
+				++passes;
+			}
+			else{
+				this.results[i] = false;
+				resultString += `!!FAIL!!: ${this.tests[i].assertionDescription} \n`;
+			}
 		}
 		else{
-			this.results[i] = false;
-			resultString += `!!FAIL!!: ${this.tests[i].assertionDescription} \n`;
+
 		}
 	}
 	resultString += "\n=====[   RESULTS   ]===== \n \n";
