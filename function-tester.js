@@ -31,7 +31,15 @@ TestSeries.prototype.run = function(){
 			}
 		}
 		else{
-
+			if(String(this.tests[i].operation(...this.tests[i].inputs))===String(this.tests[i].assertion)){
+				this.results[i] = true;
+				resultString += `..PASS..: ${this.tests[i].assertionDescription} \n`;
+				++passes;
+			}
+			else{
+				this.results[i] = false;
+				resultString += `!!FAIL!!: ${this.tests[i].assertionDescription} \n`;
+			}
 		}
 	}
 	resultString += "\n=====[   RESULTS   ]===== \n \n";
