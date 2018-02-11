@@ -30,8 +30,10 @@ function findSmallest(startRange, array){
 	for (let i = startRange; i < array.length; i++){
 		if (array[i] < smallest){
 			smallest = array[i];
+			smallestPosition = i;
 		}
 	}
+	console.log('smallestPOS',smallestPosition);
 	return smallestPosition;
 }
 
