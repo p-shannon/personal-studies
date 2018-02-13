@@ -36,16 +36,20 @@ function findSmallest(startRange, array){
 			smallestPosition = i;
 		}
 	}
-	console.log('smallestPOS',smallestPosition);
+	//console.log('smallestPOS',smallestPosition);
 	return smallestPosition;
 }
 
+//The most ugliest son of a bitch I've ever created. Will redo.
 function insertionSort(array, startRange = 0){
+	//console.log("start",array)
 	let smallestPosition = findSmallest(startRange, array);
+	let newArray = [];
 	if (smallestPosition){
-		insert(array[smallestPosition],smallestPosition,array);
-		console.log(array)
-		return insertionSort(array, ++startRange);
+		newArray = insert(array[smallestPosition], startRange, array);
+		newArray.splice(++smallestPosition,1);
+		//console.log("end",newArray);
+		return insertionSort(newArray, ++startRange);
 	}
 	else{
 		return array
