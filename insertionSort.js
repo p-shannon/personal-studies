@@ -54,5 +54,6 @@ function insertionSort(startRange = 0, array){
 
 module.exports = {
 	insert: insert,
-	findSmallest: findSmallest
+	findSmallest: findSmallest,
+	sort: insertionSort
 }
