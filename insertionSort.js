@@ -25,6 +25,9 @@ function insert(value, position, array){
 }
 
 function findSmallest(startRange, array){
+	if (startRange === array.length){
+		return false;
+	}
 	let smallest = array[startRange];
 	let smallestPosition = startRange;
 	for (let i = startRange; i < array.length; i++){
@@ -35,6 +38,18 @@ function findSmallest(startRange, array){
 	}
 	console.log('smallestPOS',smallestPosition);
 	return smallestPosition;
+}
+
+function insertionSort(startRange = 0, array){
+	let smallestPosition = findSmallest(startRange, array);
+	if (smallestPosition){
+		insert(array[smallestPosition],smallestPosition,array);
+		console.log(array)
+		return insertionSort(++startRange, array);
+	}
+	else{
+		return array
+	}
 }
 
 module.exports = {
