@@ -40,12 +40,12 @@ function findSmallest(startRange, array){
 	return smallestPosition;
 }
 
-function insertionSort(startRange = 0, array){
+function insertionSort(array, startRange = 0){
 	let smallestPosition = findSmallest(startRange, array);
 	if (smallestPosition){
 		insert(array[smallestPosition],smallestPosition,array);
 		console.log(array)
-		return insertionSort(++startRange, array);
+		return insertionSort(array, ++startRange);
 	}
 	else{
 		return array
